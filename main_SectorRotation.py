@@ -11,7 +11,7 @@ import pandas as pd
 import datetime
 
 date_market_bottom= datetime.date(2022,10,9) #The market bottom of S&P500 during the 2022 bear market
-"""
+
 df_companyProfiles= pd.read_excel('companyProfile_NYSE_NASDAQ_NSE_TSX_BSE.xlsx', sheet_name='Sheet1') #contains stock symbols from various exchanges, and their profiles: companyName, industry, sector etc. 
 profileColumns= ['symbol','companyName','sector','industry','ipoDate','currency','country']
 
@@ -50,8 +50,8 @@ for symbol in df_companyProfiles['symbol']:
     df_bottoms = pd.concat([df_bottoms, pd.DataFrame({'symbol': symbol,'sector': sector,'industry': industry,'country': country,'date_bottom': min_row['date'], 'close_bottom': min_row['close']})], axis= 0)
  
 df_bottoms.to_excel('stock_bottoms.xlsx', index=False)
-"""
-df_bottoms= pd.read_excel('stock_bottoms_final.xlsx') # uncomment to read from the data provided in the excel in repo
+
+#df_bottoms= pd.read_excel('stock_bottoms_final.xlsx') # uncomment to read from the data provided in the excel in repo
 
 # Filtering for only US stocks
 df_bottoms_US= df_bottoms[df_bottoms['country']=='US']
